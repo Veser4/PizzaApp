@@ -1,0 +1,169 @@
+html {
+    height: 100%;
+
+}
+
+.body 
+{
+    width: 100%;
+    height: 100%;
+}
+
+.wrapper 
+{
+    width: 100%;
+    height: 100%;
+    background-image: url('/assets/pizza_background.jpg');
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.logotype 
+{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+#form 
+{
+    max-width: 450px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-radius: 15px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 20px rgb(189, 189, 189);
+}
+
+.form__title 
+{
+    font: 800 45px/50px 'Roboto', serif;
+    text-align: center;
+    color: #2E2E2E; 
+}
+
+.form-error 
+{
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    padding: 5px 20px;
+    align-items: center;
+    gap: 10px;
+    background-color: #e76d75;
+    color: #FFFFFF;
+    border-radius: 10px;
+}
+
+.form-error__icon 
+{
+    width: 20px;
+    height: 20px;
+}
+
+.form-error__text
+{
+    font: 500 16px/19px 'Roboto', serif;
+}
+
+.input-space
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font: 400 16px/19px 'Roboto', serif;
+    color: #757575;
+    opacity: 85%;
+}
+
+.input-space__field
+{
+    outline: none;
+    border: 1px solid #2E2E2E;
+    border-radius: 10px;
+    padding: 10px 15px;
+    transition: all 0.5s;
+}
+
+.input-space__field:focus
+{
+    background-color: #ffe2c1;
+}
+
+.input-image
+{
+    font: 400 16px/19px 'Roboto', serif;
+    color: #757575;
+    opacity: 85%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+#avatar_path 
+{
+    font: 400 14px/16px 'Roboto', serif;
+    color: #2E2E2E;
+    opacity: 100%;
+}
+
+.form-footer 
+{
+    width: 100%;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-footer__link 
+{
+    color: #2e2e2e;
+    opacity: 85%;
+    font: 400 16px/19px 'Roboto', serif;
+    position: relative;
+    transition: all 0.5s;
+}
+
+.form-footer__link:hover
+{
+    text-decoration: underline;
+}
+
+#button_submit 
+{
+    outline: none;
+    border: none;
+    background-color: #FFCB8E;
+    padding: 12px 10px;
+    font: 700 14px/16px 'Roboto', serif;
+    color: #FFFFFF;
+    border-radius: 20px;
+    transition: background-color 0.5s;
+}
+
+#button_submit:hover
+{
+    background-color: #FF9921;
+}
+
+.hidden
+{
+    display: none;
+}
+
+.error-field 
+{
+    background-color: #ff7b6a;
+}

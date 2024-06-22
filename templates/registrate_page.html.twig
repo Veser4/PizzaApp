@@ -1,0 +1,55 @@
+{% extends "base.html.twig" %}
+{% block title %}Registration{% endblock %}
+{% block head %}
+   {{ parent() }}
+    <link rel="stylesheet" href="/css/registretion_style.css">
+{% endblock %}
+{% block registration %}
+     <div class="wrapper">
+        <img src="" alt="PIZZA" class="logotype">
+        <form method="post" id="form" enctype="multipart/form-data">
+            <h1 class="form__title">
+                REGISTRATE
+            </h1>
+            <div class="form-error hidden">
+                <img src="assets/white_error_icon.png" alt="ER" class="form-error__icon">
+                <p class="form-error__text">Error field</p>
+            </div>
+            <label for="name" class="input-space">
+                Name:
+                <input type="text" id="name" name="name" class="input-space__field">
+            </label>
+            <label for="surname" class="input-space">
+                Surname:
+                <input type="text" id="surname" name="surname" class="input-space__field">
+            </label>
+            <label for="email" class="input-space">
+                Email:
+                <input type="text" id="email" name="email" class="input-space__field">
+            </label>
+            <label for="phone" class="input-space">
+                Phone:
+                <input type="text" id="phone" name="phone" class="input-space__field">
+            </label>
+            <label for="password" class="input-space">
+                Password:
+                <input type="password" id="password" name="password" class="input-space__field">
+                <p class="input-space__subtitle">8+ символов, заглавные и строчные буквы, цифры.</p>
+            </label>
+            <label for="avatarPath" class="input-image">
+                AvatarPath:
+                <input type="file" name="avatar_path" id="avatar_path" accept="image/png, image/jpeg, image/gif">
+            </label>
+            <div class="form-footer">
+                <a href="/login" class="form-footer__link">Login</a>
+                <input type="submit" id="button_submit" value="Create Account">
+            </div>  
+        </form>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.12.0/js/md5.min.js"></script>
+    <script src="/script/registration_script.js"></script>    
+{% endblock %}

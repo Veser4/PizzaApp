@@ -1,0 +1,153 @@
+{% extends "base.html.twig" %}
+{% block title %}PizzaApp{% endblock %}
+{% block head %}
+   {{ parent() }}
+   <link rel="stylesheet" href="/css/main_page.css">
+{% endblock %}
+{% block main_page %}
+    <div class="navigation-block">
+        <ul class="navigation-list">
+            <li class="navigation-list__item item_choosen"><a href="#" class="navigation-list__link"><img src="/assets/main_icon.svg" alt="Main" class="navigation-block__icon icon_choosen"></a></li>
+            <li class="navigation-list__item"><a href="#" class="navigation-list__link"><img src="/assets/profile_icon.svg" alt="Profile" class="navigation-block__icon"></a></li>
+            <li class="navigation-list__item"><a href="#" class="navigation-list__link"><img src="/assets/payment_icon.svg" alt="Payment" class="navigation-block__icon"></a></li>
+            <li class="navigation-list__item"><a href="#" class="navigation-list__link"><img src="/assets/settings_icon.svg" alt="Settings" class="navigation-block__icon"></a></li>
+            <li class="navigation-list__item"><a href="#" class="navigation-list__link"><img src="/assets/contact_icon.svg" alt="Contact" class="navigation-block__icon"></a></li>
+        </ul>
+    </div>
+    <div class="main-content-block">
+        <div class="main-content-window">
+            <section class="main-content-window__item">
+                <div class="introduction">
+                    <div class="welocome-block">
+                        <p class="welocome-block__greating">Hello {{user.getName()}}</p>
+                        <p class="welocome-block__text">Welcome Back</p>
+                    </div>
+                </div>
+                <div class="banner">
+
+                </div>
+                <div class="menu-block">
+                    <h2 class="menu-block__title">Our Menu</h2>
+                </div>
+                <div class="pizzas-block">
+                    <div class="pizzas-wrapper">
+                        {% for pizza in pizzas %}
+                            <div class="pizza-card">
+                                <img src="" alt="" class="pizza-card__image">
+                                <p class="pizza-info__id hidden">{{pizza.getId()}}</p>
+                                <div class="pizza-info">
+                                    <p class="pizza-info__name">{{pizza.getName()}}</p>
+                                    <p class="pizza-info__prepare-time">{{pizza.getPreparationTime()}}</p>
+                                    <p class="pizza-info__weight hidden">{{pizza.getWeight()}} г.</p>
+                                    <div class="pizza-footer">
+                                        <p class="pizza-info__price">${{pizza.getPrice()}}</p>
+                                        <button class="pizza-info__add-button">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}  
+                    </div>
+                </div>
+            </section>
+            <section class="main-content-window__item">
+                <div class="user-information">
+                    <div class="user-infroamtion-image-container">
+                        <img src="" alt="" class="user-information__image">
+                    </div>
+                    <div class="user-information-data-container">
+                        <p class="user-information__nameSurname">{{user.getName()}} {{user.getSurname()}}</p>
+                        <p class="user-information__email">{{user.getEmail()}}</p>
+                        <p class="user-information__phone">{{user.getPhone()}}</p>
+                        <p class="user-information__address">{{user.getAddress()}}</p>
+                    </div>
+                </div>
+                <div class="inputs-block">
+                    <label for="password" class="inputs-block__container">
+                        Пароль
+                        <div class="inputs-block__space">
+                            <input type="text" name="password" id="password" placeholder="Пароль">
+                            <button id="password-button">Применить</button>
+                        </div>
+                    </label>
+                    <label for="address" class="inputs-block__container">
+                        Адрес
+                        <div class="inputs-block__space">
+                            <input type="text" name="address" id="address" placeholder="Адрес">
+                            <button id="address-button">Применить</button>
+                        </div>
+                    </label>
+                </div>
+                <div class="orders-history">
+                    <h1 class="orders-history__title">История заказов:</h1>
+                    <ul class="orders-history__list">
+                        <li class="orders-history__item">
+                            <div class="porders-history__item-text">Дата</div>
+                            <div class="porders-history__item-text">Адресс доставки</div>
+                            <div class="porders-history__item-text">Цена</div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section class="main-content-window__item">
+            </section>
+            <section class="main-content-window__item">
+            </section>
+            <section class="main-content-window__item">
+            </section>
+        </div>
+    </div>
+    <div class="information-block">
+        <div class="user-info">
+            <img src="/assets/image_logo.png" class="user-info__image">
+            {{user.getName()}} {{user.getSurname()}}
+            <a href='/logout'>LOGOUT</a>
+        </div>
+        <div class="credit-card-info">
+
+        </div>
+        <div class="order-menu">    
+            <div class="order-menu__title">Order Menu</div>
+            <div class="order-menu-list">
+            </div>
+            <div class="order-menu-footer">
+                <p class="order-menu__text">Total Price</p>
+                <p class="order-menu__total-price">$0.00</p>
+            </div>
+            <div class="order-menu__error height-zero">
+                Лист заказа пуст!
+            </div>
+            <button class="order-menu__button">
+                Сделать заказ
+            </button>
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    {{ parent() }}
+    <script src="/script/main_page_script.js"></script>
+
+{% endblock %}
+{# {% block user_info %}
+    <h2> FirstName:  {{user.getFirstName}}</h2>
+    <h2> Last Name: {{user.getLastName}}</h2>
+    <h2> Middle Name: {{user.getMiddleName}}</h2>
+    <h2> Birth Date: {{user.getBirthDate}}</h2>
+    <h2> Gender: {{user.getGender}}</h2>
+    <h2> Email: {{user.getEmail}}</h2>
+    <h2> Phone: {{user.getPhone}}</h2>
+    {% if user.getAvataPath() %}
+        <h2> Image: <img src="/assets/{{user.getAvataPath}}"></h2>
+    {% endif %}
+{% endblock %}
+{% block delete_block %}
+    <form action="/user/delete" method='POST'>
+        <div>
+            Удалить пользователя:
+            <input type="hidden" name="user_id" id="user_id" value="{{user.getUserId}}">
+        </div>
+        <button type="submit">Delete</button>
+    </form>
+{% endblock %}
+{% block form %}
+    {% include 'form.html.twig' with {'action': 'update', 'id': user.getUserId} %}
+{% endblock %} #}

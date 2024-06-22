@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="https://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="https://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="App\Entity\PizzaIngredient" table="pizza_ingredient">
+
+        <id name="id" type="integer" column="id">
+            <generator strategy="IDENTITY"/>
+        </id>
+
+        <unique-constraints>
+            <unique-constraint columns="pizza_id,ingredient_id" name="pizzaid_ingredientid" nullable="false" />
+        </unique-constraints>
+
+        <!-- <field name="pizza_id" column="pizza_id" type="integer" nullable="false" /> -->
+        <!-- <field name="ingredient_id" column="ingredient_id" type="integer" nullable="false" /> -->
+        <field name="count_of_ingredient" column="count_of_ingredient" type="integer" nullable="false" />
+
+        <many-to-one field="ingredient" target-entity="Ingredient" inversed-by="pizza_ingredient">
+            <cascade>
+                <cascade-persist/>
+            </cascade>
+            <join-column name="ingredient_id" referenced-column-name="id" nullable="false" />
+        </many-to-one>
+
+        <many-to-one field="pizza" target-entity="Pizza" inversed-by="pizza_ingredient">
+            <cascade>
+                <cascade-persist/>
+            </cascade>
+            <join-column name="pizza_id" referenced-column-name="id" nullable="false" />
+        </many-to-one>
+
+       
+
+        <!-- <one-to-many field="ingredient" target-entity="Ingredient" mapped-by="id">
+            <cascade>
+                <cascade-persist/>
+            </cascade>
+            <order-by>
+                <order-by-field name="id" direction="ASC" />
+            </order-by>
+        </one-to-many> -->
+    </entity>
+</doctrine-mapping>
